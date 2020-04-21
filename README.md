@@ -1,2 +1,4 @@
-# USFSMAX
- Example host MCU sketch to demonstrate USFSMAX coprocessor
+# USFSMAX Motion Coprocessor Host MCU Example Sketch
+
+## Introduction
+
