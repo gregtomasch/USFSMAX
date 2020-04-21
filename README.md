@@ -1,4 +1,4 @@
-# USFSMAX Motion Coprocessor Host MCU Example Sketch
+# USFSMAX Motion Coprocessor
 
 ## Introduction
 
