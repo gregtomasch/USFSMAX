@@ -14,3 +14,7 @@ These were the primary motivating factors behind development of the "USFSMAX" mo
 * Lots of memory - 256KB flash, 9KB SRAM
 * High-quality, stable MEMS sensors
 
+## USFSMAX Performance
+Over the period of about two years, I have made a great deal of progress in terms of both the fusion and sensor caibration methods. These have been successfully incorporated into the USFSMAX motion coprocessor hardware to provide results that are [significantly better than those from the Sentral](https://cdn.hackaday.io/images/7698711574962560703.jpg). Caibration and characterization of the first four prototype USFSMAX [showed RMS heading error ranging between 0.25 and 0.35deg](https://cdn.hackaday.io/images/8316721576958074969.jpg). Furthermore, the sinusoidal character of the heading error has been largely eiminated, indicating that the vast majority of systematic sensor errors have been effectively eliminated.
+
+But perhaps the most important advance is in the area of improved practical performance. Typically, the sensors can be well-calibrated after bench procedures conducted under controlled conditions... But the actual practical performance degrades during real-world usage. After extensive testing and experimentation it became clear that degraded heading accuracy is almost entirely driven by residual ["Hard iron" effects](http://www.jewellinstruments.com/3-factors-that-influence-electronic-compass-accuracy/).
