@@ -6,3 +6,5 @@ Tlera Corporation offers a popular set of attitude and heading reference system 
 Many customers have found the USFS to be a good solution for their particular applications. However, there are two fundamental limitations to the Sentral sensor fusion solution:
 * The ~2deg RMS residual heading error level is due to uncorrected (sinusoidal) [systematic sensor errors](https://hackaday.com/wp-content/uploads/2019/03/hackaday_journal-gregorytomasch_kriswiner-heading_accuracy_using_mems_sensors.pdf)
 * The SpacePoint adaptive algorithm is "Always on". In the case of external magnetic interference, the algorithm can adapt to local corruption of the geomagnetic field... Potentially giving bad heading results that can persist for several minutes after the magnetic interference has been resolved
+
+Closer examination of the Sentral's residual heading error showed it to be remarkably stable as well as systematic. All of these facts convinced me that an improved sensor calibration method and user-controlled
