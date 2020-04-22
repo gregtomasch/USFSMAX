@@ -7,4 +7,4 @@ Many customers have found the USFS to be a good solution for their particular ap
 * The ~2deg RMS residual heading error level is due to uncorrected (sinusoidal) [systematic sensor errors](https://hackaday.com/wp-content/uploads/2019/03/hackaday_journal-gregorytomasch_kriswiner-heading_accuracy_using_mems_sensors.pdf)
 * The SpacePoint adaptive algorithm is "Always on". In the case of external magnetic interference, the algorithm can adapt to local corruption of the geomagnetic field... Potentially giving bad heading results that can persist for several minutes after the magnetic interference has been resolved
 
-Closer examination of the Sentral's residual heading error showed it to be remarkably stable as well as systematic. All of these facts convinced me that an improved sensor calibration method and user-controlled
+Closer examination of the Sentral's residual heading error showed it to be remarkably stable as well as systematic. All of these facts convinced me that an improved sensor calibration method and user control over any adaptive elements in the fusion algorithm would be key areas to improve beyond the 2deg RMS heading error plateau. 
