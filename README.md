@@ -45,6 +45,8 @@ All bench calibrations of the accelerometers and magnetometers are stored in the
 
 The gyroscope biases are calculated at startup and are stored in the USFSMAX's EEPROM. The gyroscope bias calculation routine detects unwanted motion and resets the data buffers if the USFSMAX is bumped during gyroscope calibration. **However, it is a good idea to take care to not disturb the USFS during gyroscope calibration.** Gyroscope calibration can be selected from the sketch's serial interface at any time.
 
+The DHI correction function is activated by defining "ENABLE_DHI_CORRECTOR" as "0x01". The 2-D corrector is selected by defining "USE_2D_DHI_CORRECTOR" as "0x01", otherwise the 3-D corrector is used instead. These definitions along with some simple instructions are located in the "BASIC SETUP" section in the "config.h" tab of the sketch.
+
 If the 3-D DHI corrector is selected and active, data collection for a new hard iron correction estimate begins at startup. Tumble the USFSMAX (attached to the test object) randomly in 3-Space until the "Dynamic Hard Iron Correction Valid" field on the serial interface toggles from "0" to "128". The new value of the R-squared will be displayed as well.
 
 If the 2-D DHI corrector is selected and active, the basic procedure and serial interface response is similar. However, the USFSMAX and test object should be rotated in the horizontal plane (NOT in 3-D) for several revolutions until the corrector completes the hard iron correction estimate. The closer to level the pitch and roll attitude of the USFSMAX is held during 2-D rotation the better the hard iron correction estimate (and the larger R-squared) will be.
