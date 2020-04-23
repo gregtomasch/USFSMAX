@@ -34,3 +34,30 @@ So, the user can decide when to use the DHI corrector and the timespan over whic
 As a final matter, there are actually two versions of the DHI corrector: 3-D and 2-D. They are both capable of yielding excellent hard iron correction estimates but both are included for different use cases of the USFSMAX. Simply stated, if the test object to which the USFSMAX is attached is small/light and can easily be tumbled in 3-Space, the 3-D corrector is the best choice. If the test object is unwieldy or its motion is largely constrained to the X-Y (horizontal) plane the 2-D corrector is a better choice. Both correctors collect 150 data points at enforced separation before calculating the final correction estimate. When the estimate is complete, the hard iron corrector status bit in the calibration status register toggles true and the R-squared value populates the appropriate data registers. The desired corrector can be chosen at startup by user command from the host MCU. To get the best hard iron correction estimate:
 * 3-D corrector: Tumble the USFSMAX (attached to the test object) in 3-Space trying to sample all possible orientations. If done properly, R-square >= 0.95 is quite normal
 * 2-D corrector: Rotate the USFSMAX (attached to the test object) in the X-Y (horizontal) plane. Better hard iron correction estimates are obtained when the USFSMAX is within +/- ~5deg of level during horizontal rotation. If rigorously constrained to be level (pitch = roll = ~0) during rotation, R-square >= 0.95 can be expected. If not rigorously level during horizontal rotation, R-squared tends to be smaller. If R-squared >= ~0.75, the hard iron correction estimate is generally still quite good
+
+## Example Host MCU Sketch
+This repository contains an example host MCU Arduino sketch to demonstrate basic use of the USFSMAX motion coprocessor. This particular sketch is written for the [Tlera Dragonfly STM32L476 development board](https://www.tindie.com/products/tleracorp/dragonfly-stm32l47696-development-board/) using the [STM32L core for the Arduino IDE](https://github.com/GrumpyOldPizza/arduino-STM32L4). This code should be largely transportable to othe popular Arduino-programmable microcontroller development boards by updating the I2C library.
+
+The sketch configures the USFSMAX at startup and demonstrates the basic AHRS functions and sensor data acquisition according to the [USFSMAX register map](https://github.com/gregtomasch/USFSMAX/blob/master/USFSMAX_Reg_Map_0.0.pdf) included in this repository. The DHI corrector can be enabled/configured in the "config.h" tab of the sketch to evaluate its operation in 2-D and 3-D modes. The sketch's serial interface supports reset of the DHI corrector selected at startup.
+
+### Sensor Calibrations
+All bench calibrations of the accelerometers and magnetometers are stored in the USFSMAX's EEPROM and are not intended to be modified by the user at this time.
+
+The gyroscope biases are calculated at startup and are stored in the USFSMAX's EEPROM. The gyroscope bias calculation routine detects unwanted motion and resets the data buffers if the USFSMAX is bumped during gyroscope calibration. **However, it is a good idea to take care to not disturb the USFS during gyroscope calibration.** Gyroscope calibration can be selected from the sketch's serial interface at any time.
+
+If the 3-D DHI corrector is selected and active, data collection for a new hard iron correction estimate begins at startup. Tumble the USFSMAX (attached to the test object) randomly in 3-Space until the "Dynamic Hard Iron Correction Valid" field on the serial interface toggles from "0" to "128". The new value of the R-squared will be displayed as well.
+
+If the 2-D DHI corrector is selected and active, the basic procedure and serial interface response is similar. However, the USFSMAX and test object should be rotated in the horizontal plane (NOT in 3-D) for several revolutions until the corrector completes the hard iron correction estimate. The closer to level the pitch and roll attitude of the USFSMAX is held during 2-D rotation the better the hard iron correction estimate (and the larger R-squared) will be.
+
+### I2C Data Transactions
+**The I2C slave address of the USFSMAX is currently set to 0x57.** There are plans to make the I2C slave address user-selectable and this feature should be available in the near future. An important aspect of the USFSMAX's I2C slave bus is that there is always a finite delay between when the host MCU requests to read data and when that data is available to be read. Consequently, the USFSMAX will work best with host MCU's that support [I2C clock stretching](https://www.i2c-bus.org/clock-stretching/).
+
+It should be noted that the USFSMAX data registers are set up for efficient I2C data transfer by "Burst reading". That is, a starting data register is specified in the I2C transaction and additional data registers are read sequentially for the total number of bytes specified in the transaction. To improve overall I2C read request response time to the host MCU, not all data registers are allowed to be the starting register of an I2C read transaction. Data registers that are directly addressable at the beginning of a read transaction are highlighted in yellow in the register map. So for example, if a user wanted to read just the two Y-axis gyroscope sensor data bytes from registers 0x07 and 0x08, that is not supported. Instead, the read transaction would begin at register 0x05 and be four bytes long to include the two Y-axis gyroscope data bytes desired.
+
+### Magnetic Constants
+Your local geomagnetic constants are necessary to achieve the best heading accuracy. The constants in question are:
+* Vertical field strength (M_V)
+* Horizontal field strength (M_H)
+* Magnetic declination (MAG_DECLINATION)
+
+These constants are available for your lattitude and longitude 
