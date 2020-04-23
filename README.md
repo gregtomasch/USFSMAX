@@ -60,4 +60,21 @@ Your local geomagnetic constants are necessary to achieve the best heading accur
 * Horizontal field strength (M_H)
 * Magnetic declination (MAG_DECLINATION)
 
-These constants are available for your lattitude and longitude 
+These constants are available from [online calculators](https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml?#igrfwmm) for your lattitude and longitude. Once your geomagnetic constants have bee looked up:
+* Define an entry for your location in the "Magnetic Constantants" section of the "config.h" tab
+
+  Example:
+  
+      #define SUNNYVALE_CA_USA
+  
+* Define a new magnetic constants block in the "Magnetic Constants" section of the "def.h" tab
+
+  Example:
+  
+      #ifdef SUNNYVALE_CA_USA
+          #define M_V                                   41.8128f
+          #define M_H                                   23.2519f
+          #define MAG_DECLINIATION                      13.2197f
+      #endif
+  
+* Comment out all location definitions in the "Magnetic Constantants" section of the "config.h" tab except for your own
