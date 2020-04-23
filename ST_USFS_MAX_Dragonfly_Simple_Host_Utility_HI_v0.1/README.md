@@ -13,4 +13,14 @@ The interconnect information given here is for operating the [USFSMAX motion cop
 
 The USFSMAX board can also be used with either of the other two I2C ports and a different DRDY interrupt but the "INT_PIN" and "SENSOR_0_WIRE_INSTANCE" definitions in the "config.h" tab would need updating to reflect the changes.
 
-## Building/Uploading the Test Sketch
+## Building/Uploading/Running the Test Sketch
+
+The Sketch is built and uploaded using the [STM32L4 core for the Arduino IDE](https://github.com/GrumpyOldPizza/arduino-STM32L4):
+* Install the STM32L4 core as directed in the repository
+* Download the USFSMAX Simple Host Utility sketch from this repository and open it with the Arduino IDE
+* Go into the "Tools->Board:" menu entry of the IDE and select the "Dragonfly-L476RE" entry
+* Plug the Dragonfly development board into an available USB port on your PC. If this is the first time your Dragonfly board is being used, you might want to consult the [Dragonfly Wiki](https://github.com/kriswiner/Dragonfly/wiki)
+* Build/Upload the sketch as you would with any other Arduino board
+* Once the upload is complete, power cycle the Dragonfly/USFSMAX by unplugging and replugging the USB cabe
+* Open the Arduino serial monitor at 115200 baud. You should see some startup messages and then the calibration data scroll across the serial monitor
+* Send a "1" over the serial monitor; you should see AHRS and sensor continuously scrolling across the serial monitor
