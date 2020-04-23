@@ -50,9 +50,9 @@ If the 3-D DHI corrector is selected and active, data collection for a new hard 
 If the 2-D DHI corrector is selected and active, the basic procedure and serial interface response is similar. However, the USFSMAX and test object should be rotated in the horizontal plane (NOT in 3-D) for several revolutions until the corrector completes the hard iron correction estimate. The closer to level the pitch and roll attitude of the USFSMAX is held during 2-D rotation the better the hard iron correction estimate (and the larger R-squared) will be.
 
 ### I2C Data Transactions
-**The I2C slave address of the USFSMAX is currently set to 0x57.** There are plans to make the I2C slave address user-selectable and this feature should be available in the near future. An important aspect of the USFSMAX's I2C slave bus is that there is always a finite delay between when the host MCU requests to read data and when that data is available to be read. Consequently, the USFSMAX will work best with host MCU's that support [I2C clock stretching](https://www.i2c-bus.org/clock-stretching/).
+**The I2C slave address of the USFSMAX is currently set to 0x57.** There are plans to make the I2C slave address user-selectable and this feature should be available soon. An important aspect of the USFSMAX's I2C slave bus is that there is always a finite delay between when the host MCU requests to read data and when that data is available to be read. Consequently, the USFSMAX will work best with host MCU's that support [I2C clock stretching](https://www.i2c-bus.org/clock-stretching/).
 
-It should be noted that the USFSMAX data registers are set up for efficient I2C data transfer by "Burst reading". That is, a starting data register is specified in the I2C transaction and additional data registers are read sequentially for the total number of bytes specified in the transaction. To improve overall I2C read request response time to the host MCU, not all data registers are allowed to be the starting register of an I2C read transaction. Data registers that are directly addressable at the beginning of a read transaction are highlighted in yellow in the register map. So for example, if a user wanted to read just the two Y-axis gyroscope sensor data bytes from registers 0x07 and 0x08, that is not supported. Instead, the read transaction would begin at register 0x05 and be four bytes long to include the two Y-axis gyroscope data bytes desired.
+It should be noted that the USFSMAX data registers are set up for efficient I2C data transfer by "Burst reading". That is, a starting data register is specified in the I2C transaction and additional data registers are read sequentially for the total number of bytes specified in the transaction. To improve overall I2C read request response time to the host MCU, not all data registers can be the starting register of an I2C read transaction. Data registers that are directly addressable at the beginning of a read transaction are highlighted in yellow in the register map. So, for example, if a user wanted to read just the two Y-axis gyroscope sensor data bytes from registers 0x07 and 0x08, that is not supported. Instead, the read transaction would begin at register 0x05 and be four bytes long to include the two Y-axis gyroscope data bytes desired.
 
 ### Magnetic Constants
 Your local geomagnetic constants are necessary to achieve the best heading accuracy. The constants in question are:
@@ -60,7 +60,7 @@ Your local geomagnetic constants are necessary to achieve the best heading accur
 * Horizontal field strength (M_H)
 * Magnetic declination (MAG_DECLINATION)
 
-These constants are available from [online calculators](https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml?#igrfwmm) for your lattitude and longitude. Once your geomagnetic constants have bee looked up:
+These constants are available from [online calculators](https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml?#igrfwmm) for your latitude and longitude. Once your geomagnetic constants have been looked up:
 * Define an entry for your location in the "Magnetic Constantants" section of the "config.h" tab
 
   Example:
@@ -77,4 +77,4 @@ These constants are available from [online calculators](https://www.ngdc.noaa.go
           #define MAG_DECLINIATION                      13.2197f
       #endif
   
-* Comment out all location definitions in the "Magnetic Constantants" section of the "config.h" tab except for your own
+* Comment out all location definitions in the "Magnetic Constants" section of the "config.h" tab except for your own
