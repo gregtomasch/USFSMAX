@@ -13,6 +13,7 @@ These were the primary motivating factors behind development of the "USFSMAX" mo
 * Lots of horsepower - 96MHz Cortex M4F CPU
 * Lots of memory - 256KB flash, 9KB SRAM
 * High-quality, stable MEMS sensors
+* 1MHz asynchronous I2C slave bus for fast data transfer to the host MCU
 
 ## USFSMAX Performance
 Over the period of about two years, I have made a great deal of progress in terms of both the fusion and sensor calibration methods. These advances have been incorporated into the USFSMAX motion coprocessor hardware to provide results that are [significantly better than those from the Sentral](https://cdn.hackaday.io/images/7698711574962560703.jpg). ***Calibration and characterization of the first four prototype USFSMAX [showed RMS heading error ranging between 0.25 and 0.35deg](https://cdn.hackaday.io/images/8316721576958074969.jpg).*** Furthermore, the sinusoidal character of the heading error has been largely eiminated, indicating that the vast majority of systematic sensor errors have been effectively corrected.
