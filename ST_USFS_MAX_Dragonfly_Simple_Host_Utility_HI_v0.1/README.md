@@ -1,0 +1,3 @@
+# USFSMAX Test Sketch
+
+## Pinout
