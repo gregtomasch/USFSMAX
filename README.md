@@ -11,7 +11,7 @@ Closer examination of the Sentral's residual heading error showed it to be remar
 
 These were the primary motivating factors behind development of the ["USFSMAX" motion coprocessor](https://www.tindie.com/products/onehorse/max32660-motion-co-processor/), documented in detail on [hackaday.io](https://hackaday.io/project/160283-max32660-motion-co-processor). The actual coprocessor is Maxim Integrated's [MAX32660 Cortex M4F microcontroller](https://www.maximintegrated.com/en/products/microcontrollers/MAX32660.html). The MAX32660 is paired with ST Micro's [LSM6DSM accel/gyro](https://www.st.com/en/mems-and-sensors/lsm6dsm.html), [LIS2MDL magnetometer](https://www.st.com/en/mems-and-sensors/lis2mdl.html) and [LPS22HB barometer](https://www.st.com/en/mems-and-sensors/lps22hb.html) all of which are "Best in breed" contenders among the various MEMS sensors currently available.
 
-![alt text](https://user-images.githubusercontent.com/5760946/80747411-47c6c780-8ad8-11ea-8699-bb080a674d0c.JPG)
+![alt text](https://user-images.githubusercontent.com/5760946/80749761-cf620580-8adb-11ea-8e6f-37e32fbf8a2b.jpg)
 
 The [USFSMAX hardware](https://hackaday.io/project/160283-max32660-motion-co-processor/log/171113-final-hardware-design) is an excellent platform for enhanced sensor calibration and fusion algorithm development:
 * Lots of horsepower - 96MHz Cortex M4F CPU
