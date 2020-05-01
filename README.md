@@ -39,8 +39,23 @@ As a final matter, there are actually two versions of the DHI corrector: 3-D and
 * 3-D corrector: Tumble the USFSMAX (attached to the test object) in 3-Space trying to sample all possible orientations. If done properly, R-square >= 0.95 is quite normal
 * 2-D corrector: Rotate the USFSMAX (attached to the test object) in the X-Y (horizontal) plane. Better hard iron correction estimates are obtained when the USFSMAX is within +/- ~5deg of level during horizontal rotation. If rigorously constrained to be level (pitch = roll = ~0) during rotation, R-square >= 0.95 can be expected. If not rigorously level during horizontal rotation, R-squared tends to be smaller. If R-squared >= ~0.75, the hard iron correction estimate is generally still quite good
 
-## Example Host MCU Sketch
-This repository contains an example host MCU Arduino sketch to demonstrate basic use of the USFSMAX motion coprocessor. This particular sketch is written for the [Tlera Dragonfly STM32L476 development board](https://www.tindie.com/products/tleracorp/dragonfly-stm32l47696-development-board/) using the [STM32L4 core for the Arduino IDE](https://github.com/GrumpyOldPizza/arduino-STM32L4). This code should be largely transportable to other popular Arduino-programmable microcontroller development boards by updating the I2C library and data ready (DRDY) interrupt pin.
+## Example Host MCU Sketches
+This repository contains example host MCU Arduino sketches to demonstrate basic use of the USFSMAX motion coprocessor.
+
+### STM32L4
+This version is written for the [Tlera Dragonfly STM32L476 development board](https://www.tindie.com/products/tleracorp/dragonfly-stm32l47696-development-board/) using the [STM32L4 core for the Arduino IDE](https://github.com/GrumpyOldPizza/arduino-STM32L4). The USFSMAX breakout board can be connected to the MCU developmet board on a prototyping "Breadboard" or it can be "Piggybacked" using pin headers.
+
+### Teensy 3.x
+This version was tested using the [Teensy 3.2 and 3.6 development boards](https://www.pjrc.com/teensy/pinout.html) in the piggyback configuration. The Teensy-specific ["i2c_t3"](https://github.com/stevenvo/arduino-libraries/tree/master/i2c_t3) I2C library is used here and will need to be installed in your sketchbook folder.
+
+### ESP32
+This verson was tested using the [Tlera ESP32 development board](https://www.tindie.com/products/onehorse/smallest-esp32-development-board/), which has been retired. However, the code can be used with the ESP32 development board of your choice. For your particular board, simply go to the "config.h" tab and re-define:
+* "INT_PIN" USFSMAX data ready GPIO
+* "LED_PIN" utility LED GPIO
+* "USFS_GND_PIN "GND" GPIO (Piggyback configuration)
+* "USFS_VCC" "3V3" GPIO (Piggyback configuration)
+* "SDA_PIN" I2C data GPIO
+* "SCL_PIN" I2C clock GPIO
 
 The sketch configures the USFSMAX at startup and demonstrates the basic AHRS functions and sensor data acquisition according to the [USFSMAX register map](https://github.com/gregtomasch/USFSMAX/blob/master/USFSMAX_Reg_Map_0.0.pdf) included in this repository. The DHI corrector can be enabled/configured in the "config.h" tab of the sketch to evaluate its operation in 2-D and 3-D modes. The sketch's serial interface supports reset of the DHI corrector selected at startup.
 
