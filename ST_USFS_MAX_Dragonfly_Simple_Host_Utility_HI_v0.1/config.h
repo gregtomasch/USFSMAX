@@ -37,7 +37,7 @@
     #define MAX32660_SLV_ADDR                  (0x57)               // USFS MAX I2C slave address
     #define INT_PIN                            A3                   // USFSMAX breakout board
     #define LED_PIN                            13                   // Dragonfly blue LED
-    //#define POWER_BY_GPIO_PINS                                      // Uncomment to power the USFSMAX using Dragonfly GPIO pins
+    #define POWER_BY_GPIO_PINS                                      // Uncomment to power the USFSMAX using Dragonfly GPIO pins
     #define USFS_GND                           0                    // Dragonfly GPIO pin for USFSMAX GND
     #define USFS_VCC                           1                    // Dragonfly GPIO pin for USFSMAX 3V3
 

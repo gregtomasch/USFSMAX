@@ -45,7 +45,6 @@ IMU::IMU(USFSMAX* usfsmax, uint8_t sensornum)
 */
 void IMU::computeIMU()
 {
-  float a11[2], a21[2], a31[2], a32[2], a33[2];
   float yaw[2];
   static float buff_roll[2] = {0.0f, 0.0f}, buff_pitch[2] = {0.0f, 0.0f}, buff_heading[2] = {0.0f, 0.0f};
 
@@ -81,14 +80,12 @@ void IMU::computeIMU()
 
 void IMU::compute_Alternate_IMU()
 {
-  static float    ax[2], ay[2], az[2], gx[2], gy[2], gz[2], mx[2], my[2], mz[2], g[2][3];
+  static float    ax[2], ay[2], az[2], gx[2], gy[2], gz[2], mx[2], my[2], mz[2];
   static float    deltat[2];
   uint32_t        tnow[2];
   static float    rps_per_dps  = RPS_PER_DPS;
   static uint32_t tprev[2]     = {Start_time, Start_time};
   static uint32_t intdeltat[2] = {0, 0};
-  static float    buff_roll[2] = {0.0f, 0.0f}, buff_pitch[2] = {0.0f, 0.0f}, buff_heading[2] = {0.0f, 0.0f};
-  static float    QUAT[4]      = {1.0f, 0.0f, 0.0f, 0.0f};
   
   // Scale quaternion filter inputs to physical units
   ax[_sensornum] = accData[_sensornum][0];                                                                                                                       // In g's
