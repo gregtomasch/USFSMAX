@@ -1,3 +1,3 @@
-# USFSMAX Dragonfly Test Sketch
+# USFSMAX ESP32 Test Sketch
 
-[!alt text](https://user-images.githubusercontent.com/5760946/80746815-5365be80-8ad7-11ea-8e1b-241ee2c26463.JPG)
+![alt text](https://user-images.githubusercontent.com/5760946/80746815-5365be80-8ad7-11ea-8e1b-241ee2c26463.JPG)
