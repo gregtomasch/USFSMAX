@@ -3,22 +3,22 @@
 This interconnect information is for operating the [USFSMAX motion coprocessor board](https://cdn.tindiemedia.com/images/resize/S4Os6lUdoJOFuyZHntYHBDiDCUk=/p/full-fit-in/1782x1336/i/44691/products/2020-02-03T20%3A51%3A19.878Z-USFSMAX.top.jpg) with the Tlera [ESP32 development board](https://www.tindie.com/products/onehorse/smallest-esp32-development-board/). The default configuration of the sketch is set up to use the "Wire" instance of the TWI I2C library and pin "27" as the data ready (DRDY) interrupt. The necessary connections between the two boards are:
 
 ## Prototype Breadboard
-|USFSMAX Pin|Dragonfly Pin|
-|:---------:|:-----------:|
-|   3V3     |     3V3     |
-|   GND     |     GND     |
-|   SCL     |      15     |
-|   SDA     |      16     |
-|   INT     |      27     |
+|USFSMAX Pin|ESP32 GPIO Pin|
+|:---------:|:------------:|
+|   3V3     |      3V3     |
+|   GND     |      GND     |
+|   SCL     |       15     |
+|   SDA     |       16     |
+|   INT     |       27     |
 
 ## USFS "Piggybacked" onto Development Board
-|USFSMAX Pin|Dragonfly Pin|
-|:---------:|:-----------:|
-|   3V3     |      13     |
-|   GND     |      12     |
-|   SCL     |      15     |
-|   SDA     |      16     |
-|   INT     |      27     |
+|USFSMAX Pin|ESP32 GPIO Pin|
+|:---------:|:------------:|
+|   3V3     |       13     |
+|   GND     |       12     |
+|   SCL     |       15     |
+|   SDA     |       16     |
+|   INT     |       27     |
 
 ![alt text](https://user-images.githubusercontent.com/5760946/80746815-5365be80-8ad7-11ea-8e1b-241ee2c26463.JPG)
 
