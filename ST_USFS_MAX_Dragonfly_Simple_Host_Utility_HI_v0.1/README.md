@@ -1,6 +1,6 @@
 # USFSMAX Dragonfly Test Sketch
 
-This interconnect information is for operating the [USFSMAX motion coprocessor board](https://cdn.tindiemedia.com/images/resize/S4Os6lUdoJOFuyZHntYHBDiDCUk=/p/full-fit-in/1782x1336/i/44691/products/2020-02-03T20%3A51%3A19.878Z-USFSMAX.top.jpg) with the Dragonfly [STM32L476 development board](https://cdn.tindiemedia.com/images/resize/c3IuiwcFMGzoMgmNkZ_doDvJiuU=/p/full-fit-in/1782x1336/i/32456/products/2017-01-04T23%3A18%3A53.356Z-2016-05-14T16%2031%2059.360Z-Layout.jpg.855x570_q85_pad_rcrop.jpg). The default configuration of the sketch is set up to use the "Wire2" instance of the TWI I2C library and pin "A3" as the data ready (DRDY) interrupt. The necessary connections between the two boards are:
+This interconnect information is for operating the [USFSMAX motion coprocessor board](https://cdn.tindiemedia.com/images/resize/S4Os6lUdoJOFuyZHntYHBDiDCUk=/p/full-fit-in/1782x1336/i/44691/products/2020-02-03T20%3A51%3A19.878Z-USFSMAX.top.jpg) with the Tlera Dragonfly [STM32L476 development board](https://cdn.tindiemedia.com/images/resize/c3IuiwcFMGzoMgmNkZ_doDvJiuU=/p/full-fit-in/1782x1336/i/32456/products/2017-01-04T23%3A18%3A53.356Z-2016-05-14T16%2031%2059.360Z-Layout.jpg.855x570_q85_pad_rcrop.jpg). The default configuration of the sketch is set up to use the "Wire2" instance of the TWI I2C library and pin "A3" as the data ready (DRDY) interrupt. The necessary connections between the two boards are:
 
 ## Prototype Breadboard
 |USFSMAX Pin|Dragonfly Pin|
