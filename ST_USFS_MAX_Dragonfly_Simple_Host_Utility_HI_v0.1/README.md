@@ -28,7 +28,7 @@ The USFSMAX board can also be used with either of the other two I2C ports and a 
 
 The Sketch is built and uploaded using the [STM32L4 core for the Arduino IDE](https://github.com/GrumpyOldPizza/arduino-STM32L4):
 * Install the STM32L4 core as directed in the repository
-* Download the USFSMAX Simple Host Utility sketch from this repository and open it with the Arduino IDE
+* Download the STM32L4 USFSMAX Simple Host Utility sketch from this repository and open it with the Arduino IDE
 * Go into the "Tools->Board:" menu entry of the IDE and select the "Dragonfly-L476RE" entry
 * Plug the Dragonfly development board into an available USB port on your PC. If this is the first time your Dragonfly board is being used, you might want to consult the [Dragonfly Wiki](https://github.com/kriswiner/Dragonfly/wiki)
 * Build/Upload the sketch as you would with any other Arduino board
