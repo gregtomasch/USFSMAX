@@ -35,7 +35,6 @@
 #include "Globals.h"
 #include "Types.h"
 #include "def.h"
-#include <FS.h>
 
 // Instantiate class objects
 I2Cdev     i2c_0(&SENSOR_0_WIRE_INSTANCE);
