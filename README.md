@@ -46,7 +46,16 @@ As a final matter, there are actually two versions of the DHI corrector: 3-D and
 * 2-D corrector: Rotate the USFSMAX (attached to the test object) in the X-Y (horizontal) plane. Better hard iron correction estimates are obtained when the USFSMAX is within +/- ~5deg of level during horizontal rotation. If rigorously constrained to be level (pitch = roll = ~0) during rotation, R-square >= 0.95 can be expected. If not rigorously level during horizontal rotation, R-squared tends to be smaller. If R-squared >= ~0.75, the hard iron correction estimate is generally still quite good
 
 ## Example Host MCU Sketches
-This repository contains example host MCU Arduino sketches to demonstrate basic use of the USFSMAX motion coprocessor.
+This repository contains example host MCU Arduino sketches to demonstrate basic use of the USFSMAX motion coprocessor. The USFSMAX board is typically soldered onto pin headers and then connected to the host MCU using a solderless ptototyping "Breadboard" or by plugging into female pin header sockets soldered onto the MCU board.
+
+***Construction Note: Recent testing has shown that overheating the magnetometer can undermine calibration validity and cause loss of heading accuracy. Caution should be exercised while soldering pin headers or other connectors to the USFSMAX board. We specifically recommend:***
+* ***Use fine gauge, high quality 60-40 or 63-37 Sn/Pb electronic grade flux-core solder***
+* ***Sn-based ROHS-compliant solders are not recommended due to their higher melting/flowing temperatures***
+* ***Use a good quality soldering iron with a fine, clean tip. It should be the right temperature to cause solder to flow between the pin and plated through-hole in a few seconds. Too cold will require excessive contact time for the solder to flow, overheating the board. Too hot can cause damage to the plastic pin header block and delamination of the plated through hole pads***
+* ***Insert both rows of solder pins on both sides of the USFSMAX board, align them properly and hold them in place***
+* ***Verify that the soldering iron and solder quickly make a good joint by testing on the “INT” or “ADO” pins first***
+* ***The “GND” and “3V3” pins are the closest to the magnetometer; try to keep soldering iron contact down to 1 – 2s. Only electrical contact is required for these pins***
+* ***DO NOT solder the pins sequentially “In a row” down one side. This concentrates too much heat into a small area of the USFSMAX board. Instead, solder one pin and then skip to the next pin that is furthest away. If there is any question that the board is getting hot, stop and let it cool***
 
 ### STM32L4
 This version is written for the [Tlera Dragonfly STM32L476 development board](https://www.tindie.com/products/tleracorp/dragonfly-stm32l47696-development-board/) using the [STM32L4 core for the Arduino IDE](https://github.com/GrumpyOldPizza/arduino-STM32L4). The USFSMAX breakout board can be connected to the MCU developmet board on a prototyping "Breadboard" or it can be "Piggybacked" using pin headers.
