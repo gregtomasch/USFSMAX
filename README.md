@@ -31,10 +31,11 @@ But perhaps the most important advance is in the area of improved practical perf
 ![at text](https://user-images.githubusercontent.com/5760946/81322579-10f93000-9049-11ea-87b4-11b4db088782.png)
 
 ## Dynamic Hard Iron (DHI) Corrector
+***Note: DO NOT enable the DHI until you are ready to train the corrector under the method and controlled conditions described below. Enabling the DHI without following the proper training procedure can result in unstable output data rates and erroneous heading results.***
 The DHI corrector programmed into the USFSMAX's firmware is adaptive, similar in nature of the Sentral's SpacePoint<sup>TM</sup> algorithm but with some key differences:
 1. The DHI corrector can be enabled or disabled at startup by user command from the host MCU
 2. If there is a valid DHI correction in the USFSMAX's EEPROM, it is loaded and used at startup if the DHI corrector is enabled
-3. The DHI corrector starts collecting data at startup/reset only when there is no valid DHI correction in the EEPROM and then stops once the new hard iron correction estimate is complete. It is recommended to reset the DHI corrector from the host MCU (clearing the DHI corrector's training data buffer) and consciously train the DHI corrector under known/controlled conditions
+3. The DHI corrector starts collecting data at startup/reset only when there is no valid DHI correction in the EEPROM and then stops once the new hard iron correction estimate is complete. It is ***necessary** to reset the DHI corrector from the host MCU (clearing the DHI corrector's training data buffer) and consciously train the DHI corrector under known/controlled conditions
 4. The new DHI correction estimate is automatically stored in the USFSMAX's EEPROM upon completion
 5. The DHI corrector can be reset at any time by user command from the host MCU. Once reset, any hard iron correction estimate in the EEPROM is invalidated and data collection for a new correction estimate begins
 6. When the new hard iron correction estimate is complete, a quality figure-of-merit for the estimate is available as well. The user can then choose to let the estimate stand or reset the corrector and try again
