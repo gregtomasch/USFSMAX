@@ -42,8 +42,8 @@
     #define USFS_VCC                           21                   // Teensy GPIO pin for USFSMAX 3V3
 
     // Dynamic Hard Iron corrector (Uncomment one only)
-    #define ENABLE_DHI_CORRECTOR               0x01
-    //#define ENABLE_DHI_CORRECTOR               0x00
+    //#define ENABLE_DHI_CORRECTOR               0x01
+    #define ENABLE_DHI_CORRECTOR               0x00                 // Default DHI to off. Enable when you are ready to properly train the corrector
 
     // Dynamic Hard Iron Corrector allgorithm (Uncomment one only)
     //#define USE_2D_DHI_CORRECTOR               0x01                 // Define as "1" to use the 2D HI corrector instead of the 3D corrector
